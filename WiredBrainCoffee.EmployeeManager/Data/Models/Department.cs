@@ -2,7 +2,7 @@
 
 namespace WiredBrainCoffee.EmployeeManager.Data.Models
 {
-    public class Departement
+    public class Department
     {
         public int Id { get; set; }
         [Required]
