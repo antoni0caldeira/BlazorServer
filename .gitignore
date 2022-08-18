@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Exercice Files
+asp-dot-net-core-6-blazor-ef-core-server-application-data-driven.zip
