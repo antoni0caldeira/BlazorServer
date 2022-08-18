@@ -59,3 +59,4 @@ namespace WiredBrainCoffee.EmployeeManager.Migrations
         }
     }
 }
+ 
