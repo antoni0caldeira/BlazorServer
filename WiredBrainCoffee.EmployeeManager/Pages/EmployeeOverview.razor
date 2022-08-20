@@ -1,7 +1,50 @@
 ﻿@page "/employees/list"
+@inject IDbContextFactory<EmplyeeManagerDbContext> ContextFactory
 
 <PageTitle>Employees List</PageTitle>
 
 <h1>Employees List</h1>
 
-I have a big dick!
+@if (Employees is null)
+{
+    <div>
+        This shit is loading
+    </div>
+}
+else{
+<table class="table table-striped">
+    <thead>
+        <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Is Developer</th>
+        <th>Department</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            @foreach (var e in Employees)
+            {
+                <tr>
+                    <td>@e.FirstName</td>
+                    <td>@e.LastName</td>
+                    <td>@e.IsDeveloper</td>
+                    <td>@e.Department?.Name</td>
+                </tr>
+            }
+    </tbody>
+
+</table>
+}
+
+
+@code {
+    private Employee[]? Employees { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = ContextFactory.CreateDbContext();
+
+        Employees = await context.Employees.Include(emp => emp.Department).ToArrayAsync();
+    }
+
+}
